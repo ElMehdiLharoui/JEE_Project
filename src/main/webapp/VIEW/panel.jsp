@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="Model.utilisateur" %>
 <%@ page import="Model.Livre" %><%--
   Created by IntelliJ IDEA.
@@ -8,8 +9,9 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
+            utilisateur uti = (utilisateur) request.getSession(false).getAttribute("user");
 
-
+                request.setAttribute("Livres",uti.getLivres());
 
 
 %>
@@ -22,9 +24,9 @@
 
 <h2>Vertical Tabs</h2>
 <p>Click on the buttons inside the tabbed menu:</p>
-
+<c:forEach items="${requestScope.Livres}" var="livre">
 <div class="tab">
-    <button class="tablinks" onclick="openCity(event, 'London')" id="defaultOpen">London</button>
+    <button class="tablinks" onclick="openCity(event, 'London')" id="defaultOpen">${livre.nom}</button>
 
 </div>
 
@@ -32,7 +34,7 @@
     <h3>London</h3>
     <p>London is the capital city of England.</p>
 </div>
-
+</c:forEach>
 <script src="script/scrip.js"></script>
 
 </body>

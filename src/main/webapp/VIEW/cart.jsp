@@ -15,10 +15,10 @@
     <link rel="stylesheet" href="Style/cart.css" />
 </head>
 <body>
-<form  method="post">
+<form action="./panel" method="post">
 <h2>Accordion</h2>
 <c:forEach items="${requestScope.Livres}" var="livre">
-<button class="accordion">${livre.nom}</button>
+<button type="button" class="accordion">${livre.nom}</button>
 
 <div class="panel">
 

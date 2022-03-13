@@ -30,6 +30,9 @@ public class HelloServlet extends HttpServlet {
 
         if(u.auth_info(u) == true)
         {
+            HttpSession session = request.getSession(true);
+            session.setAttribute("user",u);
+
             response.sendRedirect(request.getContextPath()+ "/cart");
 
         }

@@ -1,7 +1,9 @@
 package Model;
 
+import java.util.Objects;
+
 public class Livre {
-    private int cmpt=0;
+    private static int cmpt=0;
     private String nom;
     private double prix;
     private int qte;
@@ -9,6 +11,19 @@ public class Livre {
 
     public int getId() {
         return id;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Livre livre = (Livre) o;
+        return id == livre.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 
     public void setId(int id) {

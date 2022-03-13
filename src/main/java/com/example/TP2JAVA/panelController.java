@@ -18,14 +18,14 @@ public class panelController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
         cart c = cart.getcart();
-        utilisateur utili = new utilisateur("mehdi","lharoui");
+        utilisateur utili = (utilisateur)request.getSession(false).getAttribute("user");
         response.sendRedirect(request.getContextPath()+ "/panel");
         String[] noms=request.getParameterValues("livre");
         for(String nom : noms){
             Livre li =c.getLivre().stream().filter(e->e.getId()==Integer.parseInt(nom)).findFirst().get();
-            utili.getC().addLivres(li);
+            utili.ajouterLivre(li);
 
         }
-        request.getRequestDispatcher( "VIEW/panel.jsp").forward(request,response);
+     response.sendRedirect("./panel");
     }
 }

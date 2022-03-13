@@ -1,11 +1,22 @@
 package Model;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class utilisateur {
     private String nom;
     private String prenom;
     private int id;
     private cart c;
+    private Set<Livre> livres = new HashSet<Livre>();
 
+    public Set<Livre> getLivres() {
+        return livres;
+    }
+     public void ajouterLivre(Livre l)
+     {
+         livres.add(l);
+     }
     public int getId() {
         return id;
     }
